@@ -1,47 +1,56 @@
-const btn = document.getElementById("btnrectangulo");
-btn.addEventListener('click' , ()=>{
+class Articulo {
+    constructor(costo, cantidad) {
+        this.costo = costo;
+        this.cantidad = cantidad;
+    }
+    total() {
+        return this.costo * this.cantidad;
+    }
+}
 
-    let base = document.getElementById("base").value;
+class Venta {
+    constructor(costo, cantidad, pagar) {
+        this.costo = costo;
+        this.cantidad = cantidad;
+        this.pagar = pagar;
+    }
+    pagar() {
+        return this.costo * this.cantidad - this.pagar;
+    }
+}
 
-    let altura = document.getElementById("altura").value;
+const btn = document.getElementById("agregar_producto");
 
-    base= parseInt(base);
-    altura=parseInt(altura);
+btn.addEventListener('click', () => {
+    let costo = document.getElementById("costo").value;
+    let cantidad = document.getElementById("cantidad").value;
 
+    costo = parseInt(costo);
+    cantidad = parseInt(cantidad);
 
-    let rect1=new Rectangulo(base,altura);
-    let divRes=document.getElementById("resultados");
-    divRes.innerHTML="<p>Rectangulo con base de " + rect1.base + " y una altura  de " + rect1.altura + "</p>";
-    divRes.innerHTML+="<p>con un area de: " + rect1.area() + "</p>";
-}); 
+    let total = new Articulo(costo, cantidad);
+    let resTotal = document.getElementById("total");
 
-const b2 = document.getElementById("btntriangulo");
-b2.addEventListener('click' , ()=>{
-
-    let base = document.getElementById("base").value;
-
-    let altura = document.getElementById("altura").value;
-
-    base=parseInt(base);
-    altura=parseInt(altura);
-
-    let rect2=new Triangulo(base,altura);
-
-    let divRes=document.getElementById("resultados");
-    divRes.innerHTML="<p>Triangulo con base de " + rect2.base + " y una altura  de " + rect2.altura + "</p>";
-    divRes.innerHTML+="<p>con un area de: " + rect2.area_t() + "</p>";
+    resTotal.innerHTML += "$" + total.total();
 });
 
-const b3 = document.getElementById("btncuadrado");
-b3.addEventListener('click' , ()=>{
+const pagar = document.getElementById("pagar_productos");
 
-    let base = document.getElementById("base").value;
+pagar.addEventListener('click', () => {
+    let costo = document.getElementById("costo").value;
+    let cantidad = document.getElementById("cantidad").value;
+    let pagar = document.getElementById("pagar").value;
 
-    base=parseInt(base);
+    costo = parseInt(costo);
+    cantidad = parseInt(cantidad);
+    total = costo * cantidad;
+    pagar = parseInt(pagar);
 
-    let rect2=new Cuadrado(base);
+    let total_pagar = new Venta(costo, cantidad, pagar);
+    let estatus = document.getElementById("estatus");
 
-    let divRes=document.getElementById("resultados");
-    divRes.innerHTML="<p>Cuadrado con base de " + rect2.base + " y una altura  de (como es un cuadrado la formula es lado*lado solo se necesita el primer valor"  + "</p>";
-    divRes.innerHTML+="<p>, el cual la altura es la misma que la base) con un area de: " + rect2.area_c() + "</p>";
+
+    estatus.innerHTML += "Cuenta pagada con exito " + "Usted debe " + total_pagar.pagar();
+
+    estatus.innerHTML += "Cuenta no pagada " + "Usted debe " + total_pagar.pagar();
 });
