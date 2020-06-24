@@ -1,31 +1,66 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Clases con HTML</title>
-        <script src="js/figura.js"></script>
-    </head>
-   
-    <body>
-        <div id="app">
-            <h1>Calculo de areas.</h1>
+<html lang="en">
 
-            <label for="base">base</label>
-            <input type="text" id="base" placeholder="ingresa la base">
-            <br><br>
-            <label for="altura">altura</label>
-            <input type="text" id="altura" placeholder="ingresa la altura">
-            <br><br>
-            <button id="btntriangulo">Crear Triangulo</button>
-            <button id="btnrectangulo">Crear Rectangulo</button>
-            <button id="btncuadrado">Crear Cuadrado</button>
-            
-            <div id="resultados">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
 
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="navbar-brand">PUNTO DE VENTA ABARROTERA</a>
+    </nav>
+    <br>
+    <div class="container">
+        <div>
+            <div class="form-group">
+                <label>Nombre del producto</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese nombre del producto">
             </div>
-            
+            <div class="form-group">
+                <label>Costo del producto</label>
+                <input class="form-control" type="number" name="costo" id="costo" placeholder="Ingrese el costo del producto">
+            </div>
+            <div class="form-group">
+                <label>Cantidad del producto</label>
+                <input class="form-control" type="number" name="cantidad" id="cantidad" placeholder="Ingrese la cantidad del producto">
+            </div>
+            <button id="agregar_producto" class="btn btn-success">Agregar producto</button>
         </div>
-        <script src="js/app.js"></script>
-    </body>
-</html>
+        <br>
+        <div style="float: left;">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    Datos importantes
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="total">Total de la venta: </li>
+                </ul>
+            </div>
+        </div>
+        <div style="float: right;">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    Pagar
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="pagar" id="pagar" placeholder="Con cuanto va a pagar">
+                        </div>
+                        <button id="pagar_productos" class="btn btn-success">Pagar</button>
+                    </li>
+                    <li class="list-group-item" id="estatus">
 
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
